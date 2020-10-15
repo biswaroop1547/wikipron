@@ -37,6 +37,12 @@ jobs:
           # Test code by importing the *installed* wikipron in site-packages.
           command: flake8 project/setup.py project/wikipron project/tests
       - run:
+          name: Type checking with mypy
+          working_directory: ~/
+          # Avoid being able to import wikipron by relative import.
+          # Test code by importing the *installed* wikipron in site-packages.
+          command: mypy project/setup.py project/wikipron project/tests project/data
+      - run:
           name: Run python tests
           working_directory: ~/
           # Avoid being able to import wikipron by relative import.
